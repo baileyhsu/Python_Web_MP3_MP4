@@ -7,4 +7,4 @@ I used PyCharm in conjunction with MongoDB (for database purposes to store favor
 
 ## SnapShots
 
-
+![alt text](test.png "Description goes here")
