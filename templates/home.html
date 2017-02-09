@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['account'] %}
+<h5>Welcome {{session['name']}}</h5>
+{% endif %}
+<h5>Welcome to the Fantasy Tube</h5>
+
+
+{% endblock %}

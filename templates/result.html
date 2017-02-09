@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{search}}</h1>
+{% for item in range (0,21) %}
+{% if '{}'.format(item) in all_item %}
+
+<div class="card" style="width: 60rem;">
+
+
+  <div class="card-block">
+    <a href="{{all_item.get('{}'.format(item))['link']}}"><h4 class="card-title">{{all_item.get('{}'.format(item))['title']}}</h4></a>
+     <div class="card-block">
+      <a href="{{all_item.get('{}'.format(item))['link']}}"><img class="card-img-top" src="{{all_item.get('{}'.format(item))['image']}}" alt="Card image cap" width="196" height="110"></a>
+
+      <p class="card-text">{{all_item.get('{}'.format(item))['time']}}</p>
+
+     </div>
+      <form action="/download" target="_blank">
+           <button type="submit" class="btn btn-warning" name="value" value="MP3&{{all_item.get('{}'.format(item))['link']}}">MP3</button>
+           <button type="submit" class="btn btn-danger" name="value" value="MP4&{{all_item.get('{}'.format(item))['link']}}">MP4</button>
+
+
+      </form>
+      <form action="/favorite" method="post">
+        <input type = "hidden", name="url", value="{{url}}">
+        <input type = "hidden", name="title", value="{{all_item.get('{}'.format(item))['title']}}">
+        <input type = "hidden", name="link", value="{{all_item.get('{}'.format(item))['link']}}">
+        <input type = "hidden", name="img", value="{{all_item.get('{}'.format(item))['image']}}">
+        <button type="submit" class="btn btn-warning">Favorite</button>
+      </form>
+
+
+  </div>
+</div>
+
+
+{% endif %}
+{% endfor %}
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+
+    <li class="page-item">
+      <a class="page-link" href="{{all_page.get('{}'.format(0))}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+{% for page in range (0,8) %}
+      {% if '{}'.format(page) in all_page %}
+
+    <li class="page-item"><a class="page-link" href="{{all_page.get('{}'.format(page))}}">{{page}}</a></li>
+
+      {% endif %}
+  {% endfor %}
+
+
+    <li class="page-item">
+      <a class="page-link" href="{{all_page.get('{}'.format(2))}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+
+{% endblock %}

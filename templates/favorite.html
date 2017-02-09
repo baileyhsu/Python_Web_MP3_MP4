@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+{% block content%}
+{% for video in user_video %}
+
+<div class="card" style="width: 60rem;">
+  <div class="card-block">
+    <a href="{{video.link}}"><h4 class="card-title">{{video.title}}</h4></a>
+     <div class="card-block">
+      <a href="{{video.link}}"><img class="card-img-top" src="{{video.img}}" alt="Card image cap" width="196" height="110"></a>
+     </div>
+      <form action="/download" target="_blank">
+           <button type="submit" class="btn btn-warning" name="value" value="MP3&{{video.link}}">MP3</button>
+           <button type="submit" class="btn btn-danger" name="value" value="MP4&{{video.link}}">MP4</button>
+      </form>
+
+  </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}
+
